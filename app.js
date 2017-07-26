@@ -7,17 +7,6 @@ var download = document.querySelector("a.download");
 var textarea = document.querySelector("textarea");
 textarea.value = textarea.value.trim();
 
-var bug = new Image();
-bug.src = "ST.svg";
-bug.width = 100;
-bug.height = 100;
-bug.onload = function() {
-  render();
-}
-
-var state = {
-  bug: "top left"
-};
 
 var bg = {
   light: "#eee",
@@ -31,6 +20,21 @@ var fg = {
   dark: "#eee",
   blue: "#ddf",
   black: "#eee"
+};
+
+
+
+var bug = new Image();
+console.log(context.fillStyle);
+//bug.src = "sfletter_c_black.png";
+bug.width = 100;
+bug.height = 100;
+bug.onload = function() {
+  render();
+}
+
+var state = {
+  bug: "top left"
 };
 
 var sizes = {
@@ -122,9 +126,9 @@ var drawImage = function() {
 };
 
 var drawBug = function() {
-  var x = 0;
-  var y = 0;
-  bug.width = bug.height = canvas.width / 10;
+  var x = 20;
+  var y = 20;
+  bug.width = bug.height = canvas.width / 15;
   if (state.bug.indexOf("bottom") > -1) {
     y = canvas.height - bug.height;
   }
@@ -150,14 +154,26 @@ var render = function() {
   context.fillStyle = bg[settings.theme] || bg.light;
   context.fillRect(0, 0, canvas.width, canvas.height);
 
+   if (context.fillStyle != '#eeeeee') {
+    bug.src = "sfletter_c_white.png";
+  } else {
+    bug.src = "sfletter_c_black.png";
+  }
+
+
   //add the image
   if (state.image) drawImage(state.image);
   //add the bug
-  drawBug();
+  //if (context.fillStyle != '#eeeeee') {
+    drawBug();
+  //} 
+
   
   //lay out the text
   context.fillStyle = fg[settings.theme] || fg.light;
   context.font = `${settings.size}px ${settings.font}`;
+  document.getElementById("antenna").style.fontFamily = "AntennaExtraLight";
+
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
   var lines = layoutText(text, maxWidth);
