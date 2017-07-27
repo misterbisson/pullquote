@@ -2,10 +2,11 @@
 
 var canvas = document.querySelector(".preview");
 var context = canvas.getContext("2d");
-
 var download = document.querySelector("a.download");
-var textarea = document.querySelector("textarea");
-textarea.value = textarea.value.trim();
+var textarea1 = document.querySelector(".input-text");
+var textarea2 = document.querySelector(".input-source");
+textarea1.value = textarea1.value.trim();
+textarea2.value = textarea2.value.trim();
 
 
 var bg = {
@@ -144,11 +145,18 @@ var render = function() {
   canvas.width = size[0];
   canvas.height = size[1];
 
-  var text = textarea.value.trim();
+  var text = textarea1.value.trim();
   text = text
     .replace(/"(\w)/g, "“$1")
     .replace(/(\S)"/g, "$1”")
     .replace(/--/g, "—");
+  var source = textarea2.value.trim();
+  source = source
+    .replace(/"(\w)/g, "“$1")
+    .replace(/(\S)"/g, "$1”")
+    .replace(/--/g, "—");
+
+//console.log(textarea);
   
   //set the background color
   context.fillStyle = bg[settings.theme] || bg.light;
@@ -172,7 +180,6 @@ var render = function() {
   //lay out the text
   context.fillStyle = fg[settings.theme] || fg.light;
   context.font = `${settings.size}px ${settings.font}`;
-  document.getElementById("antenna").style.fontFamily = "AntennaExtraLight";
 
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
@@ -195,6 +202,15 @@ var render = function() {
     context.fillText(l.text, x, lineY);
     lineY += settings.size;
   });
+
+  context.font = `60px ${settings.font}`;
+  var x = padding;
+  if (settings.alignX == "right") {
+    x = canvas.width - context.measureText(source).width - padding - 60;
+  } else if (settings.alignX == "center") {
+    x = canvas.width / 2 - context.measureText(source).width / 2 - 30;
+  }
+  context.fillText(source, x+30, lineY);
 };
 
 render();

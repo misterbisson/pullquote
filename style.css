@@ -135,7 +135,6 @@ body {
 }
 
 textarea {
-  border: none;
   background: radial-gradient(white, #eee);
   font-size: 24px;
   padding: 8px;
@@ -238,7 +237,7 @@ textarea {
   display: block;
   margin: 8px;
   padding: 8px 16px;
-  background: #66a;
+  background: #b84244;
   color: white;
   font-weight: bold;
   text-align: center;
