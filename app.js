@@ -131,10 +131,10 @@ var drawBug = function() {
   var y = 20;
   bug.width = bug.height = canvas.width / 15;
   if (state.bug.indexOf("bottom") > -1) {
-    y = canvas.height - bug.height;
+    y = canvas.height - bug.height - 20;
   }
   if (state.bug.indexOf("right") > -1) {
-    x = canvas.width - bug.width;
+    x = canvas.width - bug.width - 20;
   }
   context.drawImage(bug, x, y, bug.width, bug.height);
 };
