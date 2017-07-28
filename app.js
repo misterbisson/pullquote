@@ -1,5 +1,7 @@
 // canvas should be 1200x630
 
+window.onload = function() {
+
 var canvas = document.querySelector(".preview");
 var context = canvas.getContext("2d");
 var download = document.querySelector("a.download");
@@ -97,11 +99,20 @@ var layoutText = function(text, maxWidth) {
 };
 
 var loadImage = function(f) {
+    var renderOverlay = function() {
+    console.log("hi");
+  context.fillStyle = '#000000';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  //context.globalAlpha = .5;
+}
+  document.querySelector(".increase").addEventListener("click", renderOverlay);
   if (!f.name.match(/(jpg|jpeg|png|gif)$/i)) return;
   var reader = new FileReader();
   reader.onload = function() {
     console.log(`Read image: ${f.name}`);
     var image = state.image = new Image();
+
+
     state.image.onload = function() {
       var w = canvas.width;
       var h = image.height * (w / image.width);
@@ -113,9 +124,31 @@ var loadImage = function(f) {
       state.height = h;
       state.cx = canvas.width / 2;
       state.cy = canvas.height / 2;
+
       render();
     };
     state.image.src = reader.result;
+    console.log(state.image.width);
+    // var imageData = context.getImageData(0,0,canvas.width, canvas.height);
+    // var data = imageData.data;
+    // console.log(data);
+
+    // var lighten = function() {
+    //   for (var i = 0; i < data.length; i += 4) {
+    //     data[i] = 255 - data[i];
+    //     data[i + 1] = 255 - data[i + 1];
+    //     data[i + 2] = 255 - data[i + 2];
+    //   }
+    //   context.putImageData(imageData, 0, 0);
+    //    var newimageData = context.getImageData(0,0,canvas.width, canvas.height);
+    // var newdata = imageData.data;
+    // console.log(state.image);
+    // }
+
+
+    // document.querySelector(".increase").addEventListener("click", lighten);
+
+
   }
   reader.readAsDataURL(f);
 }
@@ -124,6 +157,15 @@ var drawImage = function() {
   var x = state.cx - state.width / 2;
   var y = state.cy - state.height / 2;
   context.drawImage(state.image, x, y, state.width, state.height);
+
+//   var renderOverlay = function() {
+//   context.fillStyle = '#000000';
+//   context.fillRect(0, 0, canvas.width, canvas.height);
+//   //context.globalAlpha = .5;
+// }
+
+// document.querySelector(".increase").addEventListener("click", renderOverlay);
+
 };
 
 var drawBug = function() {
@@ -140,6 +182,7 @@ var drawBug = function() {
 };
 
 var render = function() {
+  //console.log("up top");
   var settings = getSettings();
   var size = sizes[settings.aspect];
   canvas.width = size[0];
@@ -168,12 +211,24 @@ var render = function() {
     bug.src = "sfletter_c_black.png";
   }
 
+//   var renderOverlay = function() {
+//   context.fillStyle = '#000000';
+//   context.fillRect(0, 0, canvas.width, canvas.height);
+//   //context.globalAlpha = .5;
+// }
+
+//   document.querySelector(".increase").addEventListener("click", renderOverlay);
+
 
   //add the image
   if (state.image) drawImage(state.image);
+
+
+
+
   //add the bug
   //if (context.fillStyle != '#eeeeee') {
-    drawBug();
+  drawBug();
   //} 
 
   
@@ -211,9 +266,13 @@ var render = function() {
     x = canvas.width / 2 - context.measureText(source).width / 2 - 30;
   }
   context.fillText(source, x+30, lineY);
+
+
 };
 
 render();
+
+
 
 var everything = document.querySelectorAll("input, select, textarea");
 for (var i = 0; i < everything.length; i++) {
@@ -254,6 +313,46 @@ document.querySelector(".set-image").addEventListener("click", function() {
   }
 });
 
+    //   var imageData = context.getImageData(0,0,canvas.width, canvas.height);
+    // var data = imageData.data;
+    // // console.log(data);
+
+    // var lighten = function() {
+    //   for (var i = 0; i < data.length; i += 4) {
+    //     data[i] = 255 - data[i];
+    //     data[i + 1] = 255 - data[i + 1];
+    //     data[i + 2] = 255 - data[i + 2];
+    //   }
+    //   context.putImageData(imageData, 0, 0);
+    //    var newimageData = context.getImageData(0,0,canvas.width, canvas.height);
+    // var newdata = imageData.data;
+    // }
+
+// document.querySelector(".increase").addEventListener("click", function() {
+//   var imageData = context.getImageData(0,0,canvas.width, canvas.height);
+//     var data = imageData.data;
+//     //console.log(data);
+//     for (var i = 0; i < data.length; i += 4) {
+//         data[i] = 255 - data[i];
+//         data[i + 1] = 255 - data[i + 1];
+//         data[i + 2] = 255 - data[i + 2];
+//       }
+//       context.putImageData(imageData, 0, 0);
+//       console.log(context.getImageData(0,0,canvas.width,canvas.height).data);
+//   // render();
+// });
+
+// var renderOverlay = function() {
+//   console.log("hello");
+//   context.fillStyle = '#000000';
+//   context.fillRect(0, 0, canvas.width, canvas.height);
+//   //context.globalAlpha = .5;
+// }
+
+// document.querySelector(".increase").addEventListener("click", renderOverlay);
+
+//var imageData = canvas.getImageData(0, 0, state.image.width, state.image.height);
+
 canvas.addEventListener("mousedown", function(e) {
   state.coords = [e.clientX, e.clientY];
   state.moved = false;
@@ -293,3 +392,5 @@ canvas.addEventListener("wheel", function(e) {
   state.height *= scale;
   render();
 })
+
+}
