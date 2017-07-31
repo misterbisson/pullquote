@@ -212,7 +212,7 @@ var render = function() {
       x = canvas.width / 2 - l.width / 2;
     }
     context.fillText(l.text, x, lineY);
-    lineY += settings.quote_size;
+    lineY += settings.quote_size+10;
   });
 
   context.font = `${settings.src_size}px ${settings.font}`;
