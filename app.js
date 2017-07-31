@@ -222,7 +222,7 @@ var render = function() {
   } else if (settings.alignX == "center") {
     x = canvas.width / 2 - context.measureText(source).width / 2 - 30;
   }
-  context.fillText(source, x+30, lineY+25);
+  context.fillText(source, x+30, lineY+13);
 
 
 };
