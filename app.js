@@ -58,7 +58,7 @@ var getSettings = function() {
     var box = checkboxes[i];
     settings[box.name] = box.value;
   }
-  settings.size *= 1;
+  settings.quote_size *= 1;
   settings.padding *= 1;
   return settings;
 };
@@ -127,14 +127,6 @@ var loadImage = function(f) {
   }
   reader.readAsDataURL(f);
 }
-
-    var renderOverlay = function() {
-    console.log("hi");
-  context.fillStyle = '#000000';
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  //context.globalAlpha = .5;
-}
-
 
 var drawImage = function(opacity) {
   var x = state.cx - state.width / 2;
@@ -209,18 +201,19 @@ var render = function() {
   
   //lay out the text
   context.fillStyle = fg[settings.theme] || fg.light;
-  context.font = `${settings.size}px ${settings.font}`;
+  context.font = `${settings.quote_size}px ${settings.font}`;
+  console.log(context.font);
 
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
   var lines = layoutText(text, maxWidth);
   
   //draw the text
-  var lineY = canvas.height / 2 + settings.size / 2 - lines.length / 2 * settings.size;
+  var lineY = canvas.height / 2 + settings.quote_size / 2 - lines.length / 2 * settings.quote_size;
   if (settings.alignY == "top") {
-    lineY = padding + settings.size;
+    lineY = padding + settings.quote_size;
   } else if (settings.alignY == "bottom") {
-    lineY = canvas.height - lines.length * settings.size - padding;
+    lineY = canvas.height - lines.length * settings.quote_size - padding;
   }
   lines.forEach(function(l) {
     var x = padding;
@@ -230,10 +223,10 @@ var render = function() {
       x = canvas.width / 2 - l.width / 2;
     }
     context.fillText(l.text, x, lineY);
-    lineY += settings.size;
+    lineY += settings.quote_size;
   });
 
-  context.font = `60px ${settings.font}`;
+  context.font = `${settings.src_size}px ${settings.font}`;
   var x = padding;
   if (settings.alignX == "right") {
     x = canvas.width - context.measureText(source).width - padding - 60;
@@ -319,7 +312,6 @@ canvas.addEventListener("mouseup", function(e) {
 });
 
 canvas.addEventListener("wheel", function(e) {
-  console.log(e);
   if (!state.width) return;
   var scale = .8;
   if (e.deltaY > 0) {
