@@ -248,7 +248,7 @@ textarea {
   cursor: pointer;
 }
 
-.opacity {
+.opacity, .zoom {
   display: block;
   margin: 0px;
   padding: 4px 16px;
@@ -297,7 +297,24 @@ textarea {
     }
   }*/
 
-  .checkbox-group label[for] {
+  ul.checkbox-group {
+    list-style: none;
+  }
+
+  input.swatch {
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline;
+
+    margin: 0;
+    margin-left: 1em;
+    outline: none;
+    text-align: center;
+   
+  }
+
+/*  .checkbox-group label[for] {
     border-radius: 3px;
     cursor: pointer;
     display: inline;
@@ -314,13 +331,22 @@ textarea {
       font-size: 18px;
       vertical-align: center;
     }
-  }
+  }*/
 
-  .lighten {
-    background-color: #FFF;
-    width: 5px;
-    height: 5px;
-    border: 1px solid #ddd;
+/*  .square {
+    display: inline;
   }
+*/
+/*  .lighten {
+    background-color: #FFF;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+  }*/
+canvas {
+  z-index: 0;
+}
+
+
 
 

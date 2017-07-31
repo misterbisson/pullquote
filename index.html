@@ -68,19 +68,25 @@
           <label for="size">Font size</label>
           <input type="number" id="size" value="72">
         </div>
+        <div class="setting">
+          <label for="opacity">Image opacity</label>
+          <input type="range" id="opacity" value="1" min="0" max="1" step=".1">
+        </div>
         <input type="file" id="file">
         <a class="set-image">Add/clear image</a>
+
+
         <div class="setting toggle-button opacity-group">
-          <a class="opacity increase">+ opacity</a>
-          <a class="opacity decrease">- opacity</a>
+          <a class="zoom zoom-in">zoom in</a>
+          <a class="zoom zoom-out">zoom out</a>
         </div> 
           <!-- <div class="editor overlay" id="overlay">
            <h4>Overlay Color</h4>
-            <div class="checkbox-group">
-              <label><input type="radio" name="overlay" value=""> None</label>
-              <div class="square lighten"><label for="lighten"><input type="radio" style="background-color: #FFF" name="overlay" value="#FFF"></label></div>
-              <div class="square darken"><label for="darken"><input type="radio" style="background-color: 1E1E1E" name="overlay" value="#1E1E1E"></label></div>
-            </div>
+            <ul class="checkbox-group">
+              <li><label><input type="radio" name="overlay" value=""> None</label></li>
+              <li><label for="lighten"><input class="swatch" type="radio" style="background-color: #FFF" name="overlay" value="#FFF"></label></li>
+              <li><label for="darken"><input class="swatch" type="radio" style="background-color: #1E1E1E" name="overlay" value="#1E1E1E"></label></li>
+            </ul>
           </div>
 
           <h4>Overlay Opacity</h4>
