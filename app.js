@@ -1,6 +1,5 @@
 // canvas should be 1200x630
 
-window.onload = function() {
 
 var canvas = document.querySelector(".preview");
 var context = canvas.getContext("2d");
@@ -28,7 +27,6 @@ var fg = {
 
 
 var bug = new Image();
-console.log(context.fillStyle);
 //bug.src = "sfletter_c_black.png";
 bug.width = 100;
 bug.height = 100;
@@ -327,6 +325,3 @@ document.querySelector(".zoom-out").addEventListener("click", function() {
   state.height *= scale;
   render();
 })
-
-
-}
