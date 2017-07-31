@@ -169,7 +169,6 @@ var render = function() {
     .replace(/(\S)"/g, "$1”")
     .replace(/--/g, "—");
 
-//console.log(textarea);
   
   //set the background color
   context.fillStyle = bg[settings.theme] || bg.light;
@@ -181,13 +180,6 @@ var render = function() {
     bug.src = "sfletter_c_black.png";
   }
 
-//   var renderOverlay = function() {
-//   context.fillStyle = '#000000';
-//   context.fillRect(0, 0, canvas.width, canvas.height);
-//   //context.globalAlpha = .5;
-// }
-
-//   document.querySelector(".increase").addEventListener("click", renderOverlay);
 
 
   //add the image
@@ -202,7 +194,6 @@ var render = function() {
   //lay out the text
   context.fillStyle = fg[settings.theme] || fg.light;
   context.font = `${settings.quote_size}px ${settings.font}`;
-  console.log(context.font);
 
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
@@ -233,7 +224,8 @@ var render = function() {
   } else if (settings.alignX == "center") {
     x = canvas.width / 2 - context.measureText(source).width / 2 - 30;
   }
-  context.fillText(source, x+30, lineY);
+  context.fillText(source, x+30, lineY+25);
+
 
 };
 
