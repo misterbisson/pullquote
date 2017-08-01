@@ -182,17 +182,13 @@ var render = function() {
 
   //add the image
   if (state.image) drawImage(settings.opacity);
-
   //add the bug
-  //if (context.fillStyle != '#eeeeee') {
   drawBug();
-  //} 
 
-  
+
   //lay out the text
   context.fillStyle = fg[settings.theme] || fg.light;
   context.font = `${settings.quote_size}px ${settings.font}`;
-
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
   var lines = layoutText(text, maxWidth);
@@ -228,7 +224,6 @@ var render = function() {
 };
 
 render();
-
 
 
 var everything = document.querySelectorAll("input, select, textarea");
@@ -269,8 +264,6 @@ document.querySelector(".set-image").addEventListener("click", function() {
     fileInput.click();
   }
 });
-
-
 
 canvas.addEventListener("mousedown", function(e) {
   state.coords = [e.clientX, e.clientY];
