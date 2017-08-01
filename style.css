@@ -248,10 +248,10 @@ textarea {
   cursor: pointer;
 }
 
-.opacity, .zoom {
+.zoom {
   display: block;
   margin: 0px;
-  padding: 4px 16px;
+  padding: 4px 8px;
   color: black;
   text-align: center;
   text-decoration: none;
@@ -263,6 +263,7 @@ textarea {
 
 .opacity-group {
   margin: 0 auto;
+  padding-bottom: 10px;
 }
 
 .download:hover, .download:focus {
@@ -270,83 +271,34 @@ textarea {
   box-shadow: 0 8px 4px -4px rgba(0, 0, 0, .2);
 }
 
-/*  .overlay {
-    display: none;
+ul.checkbox-group {
+  list-style: none;
+}
 
-    // Mini-clearfix:
-    &:before,
-    &:after {
-      content: " ";
-      display: table;
-    }
-    &:after {
-      clear: both;
-    }
+input.swatch {
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-      label {
-        display: block;
-        float: left;
-        height: 20px;
-        line-height: 20px;
-      }
-    }
-  }*/
-
-  ul.checkbox-group {
-    list-style: none;
-  }
-
-  input.swatch {
-    border: 1px solid #d3d3d3;
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline;
-
-    margin: 0;
-    margin-left: 1em;
-    outline: none;
-    text-align: center;
-   
-  }
-
-/*  .checkbox-group label[for] {
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline;
-    height: 100%;
-    margin: 0;
-    margin-left: 1em;
-    outline: none;
-    text-align: center;
-    width: 30px;
-
-    &:checked:before {
-      content: 'x';
-      color: white;
-      font-size: 18px;
-      vertical-align: center;
-    }
-  }*/
-
-/*  .square {
-    display: inline;
-  }
-*/
-/*  .lighten {
-    background-color: #FFF;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ddd;
-  }*/
-canvas {
-  z-index: 0;
+  margin: 0;
+  margin-left: 1em;
+  outline: none;
+  text-align: center; 
 }
 
 
+p {
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.image-edit {
+  border-bottom: 1px dotted #333;
+  align-items: center;
+}
 
 

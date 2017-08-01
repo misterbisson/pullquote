@@ -25,7 +25,6 @@ var fg = {
 };
 
 
-
 var bug = new Image();
 //bug.src = "sfletter_c_black.png";
 bug.width = 100;
@@ -177,7 +176,6 @@ var render = function() {
   } else {
     bug.src = "sfletter_c_black.png";
   }
-
 
 
   //add the image
