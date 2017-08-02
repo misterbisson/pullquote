@@ -13,14 +13,14 @@ textarea2.value = textarea2.value.trim();
 var bg = {
   light: "#eee",
   dark: "#333",
-  blue: "#335",
+  red: "#ec1c24",
   black: "black"
 };
 
 var fg = {
   light: "#333",
   dark: "#eee",
-  blue: "#ddf",
+  red: "#ddf",
   black: "#eee"
 };
 
@@ -172,9 +172,9 @@ var render = function() {
   context.fillRect(0, 0, canvas.width, canvas.height);
 
    if (context.fillStyle != '#eeeeee') {
-    bug.src = "sfletter_c_white.png";
+    bug.src = "chronicle_logo_white.png";
   } else {
-    bug.src = "sfletter_c_black.png";
+    bug.src = "chronicle_logo_black.png";
   }
 
 
@@ -196,7 +196,7 @@ var render = function() {
   if (settings.alignY == "top") {
     lineY = padding + settings.quote_size;
   } else if (settings.alignY == "bottom") {
-    lineY = canvas.height - lines.length * settings.quote_size - padding;
+    lineY = canvas.height - lines.length * settings.quote_size - padding - 50;
   }
   lines.forEach(function(l) {
     var x = padding;
