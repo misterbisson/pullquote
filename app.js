@@ -20,7 +20,7 @@ var bg = {
 var fg = {
   light: "#333",
   dark: "#eee",
-  red: "#ddf",
+  red: "#eee",
   black: "#eee"
 };
 
