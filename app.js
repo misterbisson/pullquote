@@ -1,4 +1,5 @@
 // canvas should be 1200x630
+console.log("hi");
 
 
 var canvas = document.querySelector(".preview");
@@ -56,6 +57,7 @@ var getSettings = function() {
     settings[box.name] = box.value;
   }
   settings.quote_size *= 1;
+  settings.src_size *= 1;
   settings.padding *= 1;
   return settings;
 };
@@ -92,6 +94,7 @@ var layoutText = function(text, maxWidth) {
   if (buffer) {
     lines.push({ text: buffer, width: context.measureText(buffer).width });
   }
+  //console.log(lines);
   return lines;
 };
 
@@ -136,14 +139,14 @@ var drawImage = function(opacity) {
 };
 
 var drawBug = function() {
-  var x = 20;
-  var y = 20;
+  var x = 35;
+  var y = 35;
   bug.width = bug.height = canvas.width / 15;
   if (state.bug.indexOf("bottom") > -1) {
-    y = canvas.height - bug.height - 20;
+    y = canvas.height - bug.height - 35;
   }
   if (state.bug.indexOf("right") > -1) {
-    x = canvas.width - bug.width - 20;
+    x = canvas.width - bug.width - 35;
   }
   context.drawImage(bug, x, y, bug.width, bug.height);
 };
@@ -190,6 +193,7 @@ var render = function() {
   var padding = settings.padding;
   var maxWidth = canvas.width - padding * 2;
   var lines = layoutText(text, maxWidth);
+  var source_lines = layoutText(source, maxWidth);
   
   //draw the text
   var lineY = canvas.height / 2 + settings.quote_size / 2 - lines.length / 2 * settings.quote_size;
@@ -205,18 +209,26 @@ var render = function() {
     } else if (settings.alignX == "center") {
       x = canvas.width / 2 - l.width / 2;
     }
+    //console.log(lineY);
     context.fillText(l.text, x, lineY);
     lineY += settings.quote_size+10;
   });
 
+  //var source_lineY = canvas.height / 2 + settings.src_size / 2 - source_lines.length / 2 * settings.src_size;
   context.font = `${settings.src_size}px ${settings.font}`;
+  //var source_lineY = canvas.height / 2 + settings.quote_size / 2 - lines.length / 2 * settings.quote_size;
+  source_lines.forEach(function(l) {
   var x = padding;
   if (settings.alignX == "right") {
-    x = canvas.width - context.measureText(source).width - padding - 60;
+    x = canvas.width - l.width - padding - 60;
   } else if (settings.alignX == "center") {
-    x = canvas.width / 2 - context.measureText(source).width / 2 - 30;
+    x = canvas.width / 2 - l.width / 2 - 30;
   }
-  context.fillText(source, x+30, lineY+13);
+  console.log(lineY);
+  context.fillText(l.text, x+30, lineY+13);
+  lineY += settings.src_size+10;
+  
+});
 
 
 };
