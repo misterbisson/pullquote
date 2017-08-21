@@ -195,7 +195,7 @@ var render = function() {
   var source_lines = layoutText(source, maxWidth);
   
   //draw the text
-  var lineY = canvas.height / 2 + settings.quote_size / 2 - lines.length / 2 * settings.quote_size;
+  var lineY = 10 + canvas.height / 2 + settings.quote_size / 2 - lines.length / 2 * settings.quote_size;
   if (settings.alignY == "top") {
     lineY = padding + settings.quote_size;
   } else if (settings.alignY == "bottom") {
