@@ -121,7 +121,6 @@ var loadImage = function(f) {
       render();
     };
     state.image.src = reader.result;
-    console.log(state.image.width);
 
 
   }
@@ -224,7 +223,6 @@ var render = function() {
   } else if (settings.alignX == "center") {
     x = canvas.width / 2 - l.width / 2 - 30;
   }
-  console.log(lineY);
   context.fillText(l.text, x+30, lineY+13);
   lineY += settings.src_size+10;
   
