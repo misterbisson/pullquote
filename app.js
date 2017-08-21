@@ -40,7 +40,7 @@ var state = {
 
 var sizes = {
   facebook: [1200, 630],
-  twitter: [1024, 512],
+  twitter: [1200, 675],
   instagram: [1080, 1080]
 };
 
