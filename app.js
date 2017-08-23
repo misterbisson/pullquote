@@ -39,7 +39,7 @@ var state = {
 };
 
 var sizes = {
-  facebook: [1200, 630],
+  facebook: [1200, 628],
   twitter: [1200, 675],
   instagram: [1080, 1080]
 };
@@ -138,8 +138,8 @@ var drawImage = function(opacity) {
 };
 
 var drawBug = function() {
-  var x = 35;
-  var y = 35;
+  var x = 55;
+  var y = 55;
   bug.width = bug.height = canvas.width / 15;
   if (state.bug.indexOf("bottom") > -1) {
     y = canvas.height - bug.height - 35;
